@@ -1,5 +1,5 @@
 import redis
-r = redis.connect(host='localhost', port=6379, db=0)
+r = redis.StrictRedis(host='localhost', port=6379, db=1)
 r.hmset('fib_memory', {1: 1, 2: 1, 'max': 2})
 def fib(num):
     fib_memory = r.hgetall('fib_memory')
