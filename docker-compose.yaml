@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  e6_in_docker:
+   build: .
+   environment:
+    - PORT=8081
+    - REDIS_HOST=my_redis
+    - REDIS_PORT=6379
+   ports:
+    - 8081:8081
+   depends_on:
+    - my_redis
+  my_redis:
+    image: redis:6.0.6-alpine
+    command: redis-server
+

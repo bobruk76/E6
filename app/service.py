@@ -1,6 +1,10 @@
 import json
+import os
 import redis
-r = redis.StrictRedis(host='localhost', port=6379, db=1)
+
+host = str(os.environ.get("REDIS_HOST", "localhost"))
+port = int(os.environ.get("REDIS_PORT", 6379))
+r = redis.StrictRedis(host=host, port=port, db=1)
 
 def init_redis():
     if not r.exists('fib_memory', 'fib_max'):
